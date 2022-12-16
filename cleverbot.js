@@ -2,7 +2,7 @@ const cleverbot = require("cleverbot-free");
 const mongoose = require("mongoose");
 require("dotenv").config();
 
-console.log(process.env.MONGODB)
+console.log("MONGO KEY: " +process.env.MONGODB)
 mongoose.connect(process.env.MONGODB);
 
 mongoose.connection.once("open", (_) => {
