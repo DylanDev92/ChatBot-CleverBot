@@ -6,6 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "nodemonConfig": {
+    "ignore": ["/state.json"]
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -13,6 +16,7 @@
     "cleverbot-api-free": "^1.0.1",
     "cleverbot-free": "^1.1.12",
     "dotenv": "^16.0.3",
-    "mongoose": "^6.8.0"
+    "mongoose": "^6.8.0",
+    "nodemon": "^2.0.20"
   }
 }

@@ -1,8 +1,5 @@
-/* const cleverbot = require("cleverbot-free");
-
-cleverbot("Hello.").then(response => console.log(response)); */
-
 require('dotenv').config();
+const Chat = require('./cleverbot')
 
 const Insta = require('@arashgh/insta-js');
 
@@ -12,14 +9,17 @@ client.on('connected', () => {
     console.log(`Logged in as ${client.user.username}`);
 });
 
-client.on('messageCreate', (message) => {
+client.on('messageCreate', async (message) => {
     if (message.author.id === client.user.id) return
 
     message.markSeen();
 
-    if (message.content === '!ping') {
-        message.reply('!pong');
-    }
+    message.chat.startTyping();
+    
+    let getMessage = await Chat(message.chat.id, message.content);
+
+    message.chat.stopTyping();
+    message.chat.sendMessage(getMessage);
 });
 
 client.on('newFollower', (user) => {
@@ -29,7 +29,7 @@ client.on('newFollower', (user) => {
 
 client.on('pendingRequest', (chat) => {
     console.log("Acepted chat request from: " + chat.name)
-    chat.aprove();
+    chat.approve();
 })
 
 client.login(process.env.USER, process.env.PASSWORD);
