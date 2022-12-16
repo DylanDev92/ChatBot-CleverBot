@@ -1,7 +1,7 @@
 require('dotenv').config();
 const Chat = require('./cleverbot')
 
-const Insta = require('@arashgh/insta-js');
+const Insta = require('./insta-js');
 
 const client = new Insta.Client();
 
